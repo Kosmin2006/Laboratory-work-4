@@ -1,0 +1,34 @@
+name: Data Schema Code Convention Check
+
+on:
+  push:
+    paths:
+      - 'DataSchema.json'
+      - 'DataSchema.sql'
+      - '.github/workflows/DataSchemaCodeConvention.yml'
+
+jobs:
+  jsonlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install jsonlint
+        run: npm i -g @prantlf/jsonlint
+
+      - name: Validate JSON schema
+        run: jsonlint DataSchema.json
+
+
+  sqlfluff:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install sqlfluff
+        run: pip install sqlfluff
+
+      - name: Validate SQL schema
+        run: sqlfluff lint DataSchema.sql --dialect postgres
