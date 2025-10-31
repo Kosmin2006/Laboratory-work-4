@@ -1,134 +1,24 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Система користувачів і контенту",
-  "description": "Ієрархічна JSON Schema моделі програмного продукту: Система → Користувачі → Контент → Матеріали",
+  "title": "Система користувачів і контенту (з помилкою)",
   "type": "object",
   "properties": {
     "system": {
       "type": "object",
-      "description": "Система, яка обслуговує користувачів",
       "properties": {
-        "назва": {
-          "type": "string",
-          "description": "Назва системи",
-          "minLength": 3
-        },
+        "назва": { "type": "string" },
         "users": {
           "type": "array",
-          "description": "Список користувачів системи",
           "items": {
             "type": "object",
             "properties": {
-              "ім’я": {
-                "type": "string",
-                "description": "Ім’я користувача",
-                "minLength": 2
-              },
-              "логін": {
-                "type": "string",
-                "description": "Унікальний логін користувача",
-                "minLength": 3,
-                "maxLength": 20,
-                "pattern": "^[a-zA-Z0-9_]+$"
-              },
-              "пароль": {
-                "type": "string",
-                "description": "Зашифрований пароль користувача",
-                "minLength": 8
-              },
-              "email": {
-                "type": "string",
-                "description": "Адреса електронної пошти користувача",
-                "format": "email"
-              },
-              "account": {
-                "type": "object",
-                "description": "Обліковий запис користувача",
-                "properties": {
-                  "логін": {
-                    "type": "string",
-                    "description": "Логін облікового запису",
-                    "minLength": 3
-                  },
-                  "пароль": {
-                    "type": "string",
-                    "description": "Пароль облікового запису",
-                    "minLength": 8
-                  },
-                  "email": {
-                    "type": "string",
-                    "description": "Email для входу до системи",
-                    "format": "email"
-                  },
-                  "emailConfirmation": {
-                    "type": "object",
-                    "description": "Підтвердження email користувача",
-                    "properties": {
-                      "код_підтвердження": {
-                        "type": "string",
-                        "description": "Код для підтвердження email",
-                        "pattern": "^[0-9]{6}$"
-                      },
-                      "статус": {
-                        "type": "string",
-                        "description": "Статус підтвердження (активно/очікує)",
-                        "enum": ["очікує", "підтверджено"]
-                      }
-                    },
-                    "required": ["код_підтвердження", "статус"]
-                  }
-                },
-                "required": ["логін", "пароль", "email", "emailConfirmation"]
-              },
-              "content": {
-                "type": "array",
-                "description": "Контент, який користувач переглядає",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "назва": {
-                      "type": "string",
-                      "description": "Назва контенту",
-                      "minLength": 2
-                    },
-                    "тип": {
-                      "type": "string",
-                      "description": "Тип контенту (стаття, відео тощо)"
-                    },
-                    "materials": {
-                      "type": "array",
-                      "description": "Матеріали, що входять до контенту",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "заголовок": {
-                            "type": "string",
-                            "description": "Заголовок матеріалу",
-                            "minLength": 3
-                          },
-                          "опис": {
-                            "type": "string",
-                            "description": "Короткий опис матеріалу",
-                            "maxLength": 500
-                          },
-                          "формат": {
-                            "type": "string",
-                            "description": "Формат матеріалу (текст, відео, pdf)",
-                            "enum": ["text", "video", "pdf"]
-                          }
-                        },
-                        "required": ["заголовок", "опис", "формат"]
-                      },
-                      "minItems": 1
-                    }
-                  },
-                  "required": ["назва", "тип", "materials"]
-                }
-              }
+              "ім’я": { "type": "string", "minLength": 2 },
+              "логін": { "type": "string", "minLength": 3 },
+              "пароль": { "type": "string", "minLength": 8 },
+              "email": { "type": "string", "format": "email" }
             },
-            "required": ["ім’я", "логін", "пароль", "email", "account"]
-          },
-          "minItems": 1
+            "required": ["ім’я", "логін", "пароль", "email", "test_error"]
+          }
         }
       },
       "required": ["назва", "users"]
