@@ -1,0 +1,29 @@
+name: Program Code Convention Check (JS)
+
+on:
+  push:
+    paths:
+      - 'ProgramCode.js'
+      - 'ProgramCodeModified.js'
+      - '.github/workflows/ProgramCodeConvention.yml'
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install ESLint
+        run: |
+          npm init -y
+          npm i -g eslint
+          # optional: create a basic eslint config
+          npx eslint --init --yes
+
+      - name: Run ESLint on ProgramCode.js
+        run: eslint ProgramCode.js || true
