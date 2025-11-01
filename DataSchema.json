@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Система користувачів і контенту",
   "description": "Ієрархічна JSON Schema моделі програмного продукту: Система → Користувачі → Контент → Матеріали",
   "type": "object",
