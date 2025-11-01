@@ -3,7 +3,7 @@ name: Program Code Convention Check
 on:
   push:
     paths:
-      - 'ProgramCode.py'
+      - 'ProgramCode.yml'
       - 'ProgramCodeModified.py'
       - '.github/workflows/ProgramCodeConvention.yml'
 
