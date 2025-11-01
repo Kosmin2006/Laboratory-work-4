@@ -1,6 +1,2 @@
-function main() {
-  const productName = "MyLearningSystem";
-  console.log(`Назва програмного продукту: ${productName}`);
-}
-
-main();
+function main( ){let x=5;console.log( "Назва: "+x);}
+main()
