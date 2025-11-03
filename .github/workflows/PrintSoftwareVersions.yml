@@ -21,9 +21,6 @@ jobs:
       - name: Print .NET SDK version
         run: dotnet --version || echo ".NET не встановлено"
 
-      - name: Print Java version (Spring Boot)
-        run: java -version || echo "Java не встановлено"
-
   # --- 2. Друга робота: СКБД ---
   database-layer:
     name: Database Layer Versions
@@ -36,8 +33,6 @@ jobs:
       - name: Print PostgreSQL version
         run: psql --version || echo "PostgreSQL не встановлено"
 
-      - name: Print MySQL version
-        run: mysql --version || echo "MySQL не встановлено"
-
       - name: Print MongoDB version
         run: mongo --version || echo "MongoDB не встановлено"
+
